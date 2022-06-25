@@ -9,8 +9,11 @@
         Height="450" 
         Width="800">
     <Grid>
-        <Button Margin="245,217,217,61" Click="Button_Click">
+        <Button Margin="161,283,447,61"
+                Content="JSON 불러오기"
+                Click="Button_Click">
             
         </Button>
+        <Button Margin="479,283,129,61" Click="Button_Click_1"/>
     </Grid>
 </Window>
