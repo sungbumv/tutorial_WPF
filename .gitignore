@@ -190,3 +190,5 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+/.vs/tutorial_WPF/FileContentIndex
+/.vs/tutorial_WPF/v17
