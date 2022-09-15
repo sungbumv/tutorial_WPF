@@ -1,0 +1,32 @@
+﻿<Window x:Class="tutorial_WPF.Views.SQLite"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tutorial_WPF.Views"
+        mc:Ignorable="d"
+        Height="450" 
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid>
+        <StackPanel>
+            <DockPanel Name="Top">
+                <TextBlock Text="SQLite Test App" 
+                       Foreground="White" 
+                       Background="Black"
+                       FontSize="16px"
+                           Width="700px"/>
+                <Button Name="CloseBtn"
+                        Content="×"
+                        FontSize="16px"
+                        Foreground="White"
+                        Background="Black" Click="CloseBtn_Click"/>
+            </DockPanel>
+            <DockPanel>
+                <Button Name="Create" 
+                        Height="50px" Click="Create_Click"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
