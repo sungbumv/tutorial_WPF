@@ -36,7 +36,7 @@ namespace tutorial_WPF.Views
         private void SQLiteConnect()
         {
             string DBfileName = "text.sqlite";
-
+            
             
         }
 
