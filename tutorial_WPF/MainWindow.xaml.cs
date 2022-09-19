@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tutorial_WPF.Views;
 
 namespace tutorial_WPF
 {
@@ -23,6 +24,13 @@ namespace tutorial_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void SQLiteTest_Click(object sender, RoutedEventArgs e)
+        {
+            SQLite sqlite = new SQLite();
+            sqlite.Show();
         }
     }
 }

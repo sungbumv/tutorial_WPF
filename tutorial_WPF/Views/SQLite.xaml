@@ -10,7 +10,11 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <Grid>
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="63*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
             <DockPanel Name="Top">
                 <TextBlock Text="SQLite Test App" 
                        Foreground="White" 
@@ -23,9 +27,19 @@
                         Foreground="White"
                         Background="Black" Click="CloseBtn_Click"/>
             </DockPanel>
-            <DockPanel>
+            <DockPanel Height="50">
+                <Button Name="FolderCreate" 
+                        Content="폴더생성"
+                         Click="FolderCreate_Click"/>
+                <Button Name="OpenConnect" 
+                        Content="Open/Connect"
+                         Click="OpenConnect_Click"/>
                 <Button Name="Create" 
-                        Height="50px" Click="Create_Click"/>
+                        Content="DB Create"
+                         Click="Create_Click"/>
+                <Button Name="Insert" 
+                        Content="Insert"
+                         Click="Insert_Click"/>
             </DockPanel>
         </StackPanel>
     </Grid>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using System.IO;
 
 namespace tutorial_WPF.Views
     
@@ -21,9 +22,15 @@ namespace tutorial_WPF.Views
     /// </summary>
     public partial class SQLite : Window
     {
+        public static string dbFolderPath = @"C:/SQLiteTest";
+        private string dbPath = string.Format("{0}{1}", dbFolderPath, "/test.sqlite");
+        private SQLiteConnection conn;
+
         public SQLite()
         {
             InitializeComponent();
+
+           
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -35,14 +42,59 @@ namespace tutorial_WPF.Views
 
         private void SQLiteConnect()
         {
-            string DBfileName = "text.sqlite";
             
             
         }
-
+        /// <summary>
+        /// 생성처리
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Create_Click(object sender, RoutedEventArgs e)
         {
+            string sql = "Create table Members (name varchar(20), age int)";
 
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            int result = command.ExecuteNonQuery();
+
+            sql = "create index idx01 on members(name)";
+            command = new SQLiteCommand(sql, conn);
+            result = command.ExecuteNonQuery();
+        }
+        /// <summary>
+        /// 커넥팅 처리
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenConnect_Click(object sender, RoutedEventArgs e)
+        {
+            //DB파일 생성
+            SQLiteConnection.CreateFile(dbPath);
+            
+            conn = new SQLiteConnection("DataSource=C:/SQLiteTest/test.sqlite;Version=3;");
+            conn.Open();
+        }
+        /// <summary>
+        /// DB Insert 테스트 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Insert_Click(object sender, RoutedEventArgs e)
+        {
+            string sql = "insert into members (name, age) values ('이성범', 6)";
+
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            int result = command.ExecuteNonQuery();
+        }
+
+        private void FolderCreate_Click(object sender, RoutedEventArgs e)
+        {
+            //폴더 생성
+            DirectoryInfo di = new DirectoryInfo(dbFolderPath);
+            if(di.Exists == false)
+            {
+                di.Create();
+            }
         }
     }
 }
