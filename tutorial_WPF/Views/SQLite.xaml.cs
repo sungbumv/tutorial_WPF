@@ -38,13 +38,11 @@ namespace tutorial_WPF.Views
             Application.Current.Shutdown();
         }
 
-
-
         private void SQLiteConnect()
         {
             
-            
         }
+        
         /// <summary>
         /// 생성처리
         /// </summary>
@@ -61,6 +59,7 @@ namespace tutorial_WPF.Views
             command = new SQLiteCommand(sql, conn);
             result = command.ExecuteNonQuery();
         }
+        
         /// <summary>
         /// 커넥팅 처리
         /// </summary>
@@ -74,6 +73,7 @@ namespace tutorial_WPF.Views
             conn = new SQLiteConnection("DataSource=C:/SQLiteTest/test.sqlite;Version=3;");
             conn.Open();
         }
+        
         /// <summary>
         /// DB Insert 테스트 
         /// </summary>
@@ -84,7 +84,9 @@ namespace tutorial_WPF.Views
             string sql = "insert into members (name, age) values ('이성범', 6)";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
-            int result = command.ExecuteNonQuery();
+            int result = command.ExecuteNonQuery(); // 중복 인서트시 에러발생 
+
+            MessageBox.Show(result.ToString()); 
         }
 
         private void FolderCreate_Click(object sender, RoutedEventArgs e)
@@ -95,6 +97,19 @@ namespace tutorial_WPF.Views
             {
                 di.Create();
             }
+        }
+
+        private void Select_Click(object sender, RoutedEventArgs e)
+        {
+            string sql = "select * from members";
+
+            SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                MessageBox.Show(reader["name"] + " " + reader["age"]);
+            }
+            
         }
     }
 }

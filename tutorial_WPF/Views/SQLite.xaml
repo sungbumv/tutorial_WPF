@@ -40,6 +40,9 @@
                 <Button Name="Insert" 
                         Content="Insert"
                          Click="Insert_Click"/>
+                <Button Name="Select" 
+                        Content="Select"
+                         Click="Select_Click"/>
             </DockPanel>
         </StackPanel>
     </Grid>
